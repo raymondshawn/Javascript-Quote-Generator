@@ -32,6 +32,7 @@ let quotes;
 setTimeout(()=>{
 
     
+
 },1000) 
   
  
