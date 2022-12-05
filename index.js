@@ -1,27 +1,10 @@
-const data = () => {
-  const response = fetch("https://type.fit/api/quotes")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      return data;
-    });
-  return response;
+const data = async () => {
+  const response = await fetch("https://type.fit/api/quotes");
+  return await response.json();
 };
 
-let quotes;
-
-data()
-  .then((response) => {
-    console.log("first then response");
-    quotes = response;
-    return response;
-  })
-  .then(() => {
-    console.log("second then finished");
-  });
-
-setTimeout(() => {
+data().then((quotes) => {
+  console.log("quotes", quotes);
   const author = document.getElementById("author");
   const quote = document.getElementById("quote");
   const btn = document.getElementById("btn");
@@ -33,4 +16,4 @@ setTimeout(() => {
     quote.textContent = text;
     author.textContent = auth;
   });
-}, 1000);
+});
